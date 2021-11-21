@@ -1,0 +1,16 @@
+type PlantFamily @model @auth(rules: [{ allow: public, operations: [read] }]){
+  id: ID!
+  name: String!
+  description: String!
+  plants: [Plant] @connection(keyName: "byPlant", fields: ["id"])
+}
+
+type Plant @model @key(name: "byPlant", fields: ["familyID"]) @auth(rules: [{ allow: public, operations: [read] }]) {
+  id: ID!
+  name: String!
+  description: String!
+  dateWatered: AWSDate!
+  familyID: ID!
+  family: PlantFamily@connection(fields: ["familyID"])
+  img: String
+}
