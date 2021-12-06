@@ -1,11 +1,12 @@
 import React from 'react'
+import Amplify from 'aws-amplify'
+
+import config from './aws-exports'
 import './App.css'
 
 import Header from './layouts/Header'
 import { Plant } from './plants/Plant'
 import { Plants } from './plants/Plants'
-import Amplify from 'aws-amplify'
-import config from './aws-exports'
 
 Amplify.configure(config)
 
